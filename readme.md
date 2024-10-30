@@ -4,14 +4,15 @@ This repository contains Kubernetes configuration files that implement key secur
 
 ## Files Overview
 
-### 1. `rbac.yaml`
-
-- Ensures that the go-app-sa service account has controlled access to pods within its namespace, following the principle of least privilege
-
-### 2. `namespace.yaml`
+### 1. `namespace.yaml`
 
 - Creates a new namespace named go-app to isolate and manage resources related to an application.
 - Defines a ServiceAccount named go-app-sa within the go-app namespace, providing an identity for Pods in that namespace to securely access the Kubernetes API and other resources
+
+### 2. `rbac.yaml`
+
+- Ensures that the go-app-sa service account has controlled access to pods within its namespace, following the principle of least privilege
+
 
 ### 3. `network-policy.yaml`
 
