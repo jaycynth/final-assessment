@@ -22,7 +22,7 @@ This repository contains Kubernetes configuration files that implement key secur
 
 # CI/CD Pipeline 
 
-The CI/CD pipeline consists of several 4 jobs, each performing specific functions:
+The CI/CD pipeline consists of several 3 jobs, each performing specific functions:
 
 ### 1. Build Job
 
@@ -32,12 +32,8 @@ The CI/CD pipeline consists of several 4 jobs, each performing specific function
 - **Run Gosec Security Scanner**: Executes the Gosec security scanner to analyze the Go code for vulnerabilities. This helps ensure that the application is secure before it is built.
 - **Validate Kubernetes Manifests**: Uses `instrumenta/kubeval-action@master` to validate Kubernetes manifest files located in the `k8s` directory. This checks for syntactical correctness and ensures they adhere to Kubernetes specifications.
 
-### 2. Scan Job
 
-- **Install Trivy**: Installs Trivy, a popular vulnerability scanner for Docker images.
-- **Scan Docker Image for Vulnerabilities**: Uses Trivy to scan the built Docker image for known vulnerabilities. This step is crucial for identifying security risks before deployment.
-
-### 3. Docker Job
+### 2. Docker Job
 
 - **Code Checkout**: Checks out the code again to ensure the latest changes are included.
 - **Log in to Docker Hub**: Uses `docker/login-action@v1` to authenticate to Docker Hub using stored secrets. This allows the pipeline to push the Docker image securely.
@@ -45,7 +41,7 @@ The CI/CD pipeline consists of several 4 jobs, each performing specific function
 - **Scan Docker Image for Vulnerabilities**: Runs Trivy in a Docker container to scan the built image for high and critical vulnerabilities, ensuring only secure images are deployed.
 - **Push Docker Image**: Pushes the built Docker image (`jaycynth/go-http-server:v0.1`) to Docker Hub, making it available for deployment.
 
-### 4. Deploy Job
+### 3. Deploy Job
 
 - **Code Checkout**: Checks out the code again in preparation for deployment.
 - **Install Kind**: Installs Kind (Kubernetes in Docker), which allows the creation of a local Kubernetes cluster for testing and deployment.

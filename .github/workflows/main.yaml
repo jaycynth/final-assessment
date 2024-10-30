@@ -25,11 +25,11 @@ jobs:
       #   with:
       #     args: ./...
 
-       - name: Debug
-         run: |
-           pwd
-           echo ${GOPATH}
-           echo ${GOROOT}
+      - name: Debug
+        run: |
+          pwd
+          echo ${GOPATH}
+          echo ${GOROOT}
 
       - name: Validate Kubernetes Manifests
         uses: instrumenta/kubeval-action@master
