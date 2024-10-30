@@ -21,8 +21,11 @@ jobs:
           go-version: 1.20
 
       
+      - name: Install Staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
       - name: Run Staticcheck
-        run: go install honnef.co/go/tools/cmd/staticcheck@latest && staticcheck ./...
+        run: staticcheck ./...
 
       - name: Validate Kubernetes Manifests
         uses: instrumenta/kubeval-action@master
