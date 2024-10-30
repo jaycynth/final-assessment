@@ -27,15 +27,16 @@ jobs:
 
   scan:
     runs-on: ubuntu-latest
-    needs: build
-
+    container:
+      image: securego/gosec:2.15.0
+      options: --user root
     steps:
-      - name: Install Trivy for Image Scanning
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run Go Security Check
         run: |
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
-
-      - name: Scan Docker Image for Vulnerabilities
-        run: trivy image ghcr.io/${{ github.repository }}/go-http-server:latest
+          gosec -exclude-dir=migrate ./...
+        working-directory: ${{ github.workspace }}/packages/serverless
 
   docker:
     runs-on: ubuntu-latest
