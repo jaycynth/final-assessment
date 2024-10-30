@@ -2,16 +2,17 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, Kubernetes!")
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "Hello, world!")
 }
 
 func main() {
-	http.HandleFunc("/", handler)
-	log.Println("Server starting on port 8080...")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	http.HandleFunc("/", helloHandler)
+	fmt.Println("Starting server on port 8080")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		fmt.Println(err)
+	}
 }
