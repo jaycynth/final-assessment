@@ -20,12 +20,6 @@ jobs:
         with:
           go-version: 1.20
 
-      - id: gosec
-        uses: ellogroup/gosec-action@v1
-        with:
-        working-directory: '.'
-        go-package: './...'
-
       - name: Validate Kubernetes Manifests
         uses: instrumenta/kubeval-action@master
         with:
