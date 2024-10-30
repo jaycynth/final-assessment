@@ -28,8 +28,8 @@ The CI/CD pipeline consists of several 3 jobs, each performing specific function
 
 - **Code Checkout**: Uses `actions/checkout@v3` to check out the latest code from the repository.
 - **Set Up Go Environment**: Uses `actions/setup-go@v3` to install Go version 1.20.
-- **Set GOROOT**: Configures the GOROOT environment variable for Go.
-- **Run Gosec Security Scanner**: Executes the Gosec security scanner to analyze the Go code for vulnerabilities. This helps ensure that the application is secure before it is built.
+- **Run GoLint**: Executes the lint checks
+- **Run GO Tests**: Executes go tests
 - **Validate Kubernetes Manifests**: Uses `instrumenta/kubeval-action@master` to validate Kubernetes manifest files located in the `k8s` directory. This checks for syntactical correctness and ensures they adhere to Kubernetes specifications.
 
 
@@ -52,6 +52,13 @@ The CI/CD pipeline consists of several 3 jobs, each performing specific function
   - **RBAC**: Configures Role-Based Access Control to manage permissions securely.
   - **Network Policy**: Enforces policies to restrict pod-to-pod communication as required.
   - **Deployment**: Deploys the Go HTTP server application to the Kubernetes cluster.
+
+
+
+## Cluster Design
+
+![screenshot](images/cluster.png)
+
 
 
 
