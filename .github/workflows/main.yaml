@@ -29,6 +29,11 @@ jobs:
         with:
           args: ./...
 
+      - name: Validate Kubernetes Manifests
+        uses: instrumenta/kubeval-action@master
+        with:
+          files: ./k8s
+
 
   scan:
     runs-on: ubuntu-latest
