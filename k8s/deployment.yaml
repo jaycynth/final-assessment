@@ -1,4 +1,4 @@
-# Deployment (deployment.yaml)
+# Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,7 +17,7 @@ spec:
       serviceAccountName: go-app-sa
       containers:
         - name: go-http-server
-          image: ghcr.io/<your-username>/go-http-server:latest
+          image: jaycynth/go-http-server:v0.1
           ports:
             - containerPort: 8080
 
