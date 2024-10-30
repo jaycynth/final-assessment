@@ -20,10 +20,8 @@ jobs:
         with:
           go-version: 1.20
 
-      - name: Run Gosec Security Scanner
-        uses: securego/gosec@v2.12.0 
-        with:
-          args: ./...
+      - name: Analyze code statically using gosec
+        uses: naokikimura/gosec-action@v0
 
       - name: Validate Kubernetes Manifests
         uses: instrumenta/kubeval-action@master
