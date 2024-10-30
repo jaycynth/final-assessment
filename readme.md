@@ -35,7 +35,7 @@ The CI/CD pipeline consists of several 4 jobs, each performing specific function
 ### 2. Scan Job
 
 - **Install Trivy**: Installs Trivy, a popular vulnerability scanner for Docker images.
-- **Scan Docker Image for Vulnerabilities**: Uses Trivy to scan the built Docker image (`ghcr.io/${{ github.repository }}/go-http-server:latest`) for known vulnerabilities. This step is crucial for identifying security risks before deployment.
+- **Scan Docker Image for Vulnerabilities**: Uses Trivy to scan the built Docker image for known vulnerabilities. This step is crucial for identifying security risks before deployment.
 
 ### 3. Docker Job
 
