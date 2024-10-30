@@ -1,0 +1,24 @@
+# RBAC Permissions (rbac.yaml)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: go-app
+  name: go-app-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: go-app-binding
+  namespace: go-app
+subjects:
+  - kind: ServiceAccount
+    name: go-app-sa
+    namespace: go-app
+roleRef:
+  kind: Role
+  name: go-app-role
+  apiGroup: rbac.authorization.k8s.io

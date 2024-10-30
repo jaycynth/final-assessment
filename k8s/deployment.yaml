@@ -1,0 +1,36 @@
+# Deployment (deployment.yaml)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-http-server
+  namespace: go-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: go-http-server
+  template:
+    metadata:
+      labels:
+        app: go-http-server
+    spec:
+      serviceAccountName: go-app-sa
+      containers:
+        - name: go-http-server
+          image: ghcr.io/<your-username>/go-http-server:latest
+          ports:
+            - containerPort: 8080
+
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-http-service
+  namespace: go-app
+spec:
+  selector:
+    app: go-http-server
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

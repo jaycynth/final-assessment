@@ -1,0 +1,11 @@
+# Namespace and Service Account (namespace.yaml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: go-app
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: go-app-sa
+  namespace: go-app
