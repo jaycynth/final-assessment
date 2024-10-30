@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GO111MODULE: on
+      GOROOT: /usr/local/go
 
     steps:
       - name: Checkout code
