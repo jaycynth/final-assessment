@@ -24,9 +24,11 @@ jobs:
         run: echo "GOROOT=${{ env.GOROOT }}" >> $GITHUB_ENV
 
        
-      - name: Run Gosec
-        run: |
-          gosec -c gosec.toml
+      - name: Install gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
+      - name: Run gosec
+        run: gosec ./...
 
   scan:
     runs-on: ubuntu-latest
